@@ -15,5 +15,6 @@ Manage hash in sqlite3, as an alternative to "snapraid content".
     go.mod      /home/rok/src/github.com/aca/farchive/go.mod      1078  b71ed6c8a8a82c7c  1717664739  1717665451
     main.go     /home/rok/src/github.com/aca/farchive/main.go     3185  48ed034ab7d791a1  1717665448  1717665451
 
+    # Edit main.go
     λ go run .
     2024/06/06 18:18:26 UPDATE HASH main.go 48ed034ab7d791a1 64291ff9f1b0960d
