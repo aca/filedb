@@ -17,6 +17,6 @@ buildGoApplication {
   version = "0.1";
   pwd = ./.;
   src = ./.;
-  subPackages = "farchive";
+  # subPackages = ".";
   modules = ./gomod2nix.toml;
 }
