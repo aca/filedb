@@ -1,6 +1,6 @@
 # farchive
 
-Manage hash in sqlite3, as an alternative to "snapraid content".
+Manage hash in sqlite3, as an personal alternative to [snapraid content](https://www.snapraid.it/).
 
     λ go run .
     2024/06/06 18:17:31 new file go.sum

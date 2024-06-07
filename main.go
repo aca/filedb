@@ -5,6 +5,7 @@ import (
 	"errors"
 	"fmt"
 	"io"
+	"io/fs"
 	"log"
 	"os"
 	"path/filepath"
@@ -79,6 +80,12 @@ func main() {
 			if info.IsDir() {
 				return nil
 			}
+
+			if (info.Mode() & fs.ModeSymlink) != 0 {
+				log.Println(path, "is symlink")
+				return nil
+			}
+
 
 			files = append(files, &File{
 				Path: path,
