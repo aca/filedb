@@ -31,6 +31,9 @@ schema = 3
   [mod."github.com/samber/lo"]
     version = "v1.39.0"
     hash = "sha256-bFJXbzFpUQM2xoNrHrlzn0RJZujd21H00zGBgo/JEb0="
+  [mod."github.com/xtdlib/filepathx"]
+    version = "v0.0.0-20240607141025-fc5ce7e20891"
+    hash = "sha256-f0Ldp3w5DR5U4Val/VuyAf/HgwWBxDXayuQjEYLbAAM="
   [mod."github.com/xtdlib/sqlitex"]
     version = "v0.0.0-20240606021949-4ea912f22133"
     hash = "sha256-qo60cSMGfMrTMO3TKfDmTx8y2EHMigA2H7xlFHA3fek="
