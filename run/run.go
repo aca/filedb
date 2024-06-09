@@ -147,12 +147,19 @@ func HashFile(file *File) {
 		if row.Size != info.Size() || row.ModifiedAt != info.ModTime().Unix() {
 			hashnew := XXHash(path)
 			row.ValidatedAt = time.Now().Unix()
-			db.MustExec(`UPDATE file SET size = ?, modifiedAt = ?, hash = ?, validatedAt = ? WHERE path = ?`, info.Size(), info.ModTime().Unix(), hashnew, path, row.ValidatedAt)
 			if row.Hash != hashnew {
 				log.Println("UPDATE HASH", path, row.Hash, hashnew)
 			} else {
 				log.Println("file not changed: ", path)
 			}
+			db.MustNamedExec(`UPDATE file SET size = :size, modifiedAt = :modifiedAt, hash = :hash, validatedAt = :validatedAt WHERE path = :path`,
+				map[string]interface{}{
+					"path":        path,
+					"size":        info.Size(),
+					"modifiedAt":  info.ModTime().Unix(),
+					"hash":        hashnew,
+					"validatedAt": row.ValidatedAt,
+				})
 		}
 	} else {
 		log.Println("new file", path)

@@ -24,6 +24,7 @@ func Run(opt *CommandOpt) error {
 		row2 := types.Row{}
 		db2.MustGet(&row2, `select * from file where path = ?`, row.Path)
 
+		log.Println(row.Hash, row2.Hash)
 		if row.Hash != row2.Hash {
 			log.Fatal("hash not equal", row.Abs, row2.Abs)
 		}

@@ -3,6 +3,7 @@ package main
 import (
 	"log"
 	"os"
+	"path/filepath"
 
 	"github.com/aca/farchive/diff"
 	"github.com/aca/farchive/run"
@@ -21,8 +22,11 @@ func main() {
 
 func newRootCmd(args []string) (*cobra.Command, error) {
 	versionFlag := false
+
+	
+
 	cmd := &cobra.Command{
-		Use:           os.Args[0],
+		Use:           filepath.Base(os.Args[0]), // avoid abs
 		SilenceUsage:  false,
 		SilenceErrors: false,
 	}
