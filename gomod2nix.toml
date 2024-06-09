@@ -1,6 +1,9 @@
 schema = 3
 
 [mod]
+  [mod."github.com/cespare/xxhash"]
+    version = "v1.1.0"
+    hash = "sha256-nVDTtXH9PC3yJ0THaQZEN243UP9xgLi/clt5xRqj3+M="
   [mod."github.com/cespare/xxhash/v2"]
     version = "v2.3.0"
     hash = "sha256-7hRlwSR+fos1kx4VZmJ/7snR7zHh8ZFKX+qqqqGcQpY="
@@ -13,6 +16,9 @@ schema = 3
   [mod."github.com/hashicorp/golang-lru/v2"]
     version = "v2.0.7"
     hash = "sha256-t1bcXLgrQNOYUVyYEZ0knxcXpsTk4IuJZDjKvyJX75g="
+  [mod."github.com/inconshreveable/mousetrap"]
+    version = "v1.1.0"
+    hash = "sha256-XWlYH0c8IcxAwQTnIi6WYqq44nOKUylSWxWO/vi+8pE="
   [mod."github.com/jmoiron/sqlx"]
     version = "v1.4.0"
     hash = "sha256-0H132+A983nBr2zEyCKsJoBCZlC9pG+ylEcGysxKL4M="
@@ -28,9 +34,12 @@ schema = 3
   [mod."github.com/remyoudompheng/bigfft"]
     version = "v0.0.0-20230129092748-24d4a6f8daec"
     hash = "sha256-vYmpyCE37eBYP/navhaLV4oX4/nu0Z/StAocLIFqrmM="
-  [mod."github.com/samber/lo"]
-    version = "v1.39.0"
-    hash = "sha256-bFJXbzFpUQM2xoNrHrlzn0RJZujd21H00zGBgo/JEb0="
+  [mod."github.com/spf13/cobra"]
+    version = "v1.8.0"
+    hash = "sha256-oAE+fEaRfZPE541IPWE0GMeBBYgH2DMhtZNxzp7DFlY="
+  [mod."github.com/spf13/pflag"]
+    version = "v1.0.5"
+    hash = "sha256-w9LLYzxxP74WHT4ouBspH/iQZXjuAh2WQCHsuvyEjAw="
   [mod."github.com/xtdlib/filepathx"]
     version = "v0.0.0-20240607141025-fc5ce7e20891"
     hash = "sha256-f0Ldp3w5DR5U4Val/VuyAf/HgwWBxDXayuQjEYLbAAM="
@@ -40,18 +49,15 @@ schema = 3
   [mod."github.com/xtdlib/try"]
     version = "v0.0.0-20240604182125-f8a60e11c9c6"
     hash = "sha256-VCGVm7GoyKIr2m8ivJ5Bzyvy4+UB1y03e/3cVAQzjwE="
-  [mod."golang.org/x/exp"]
-    version = "v0.0.0-20231108232855-2478ac86f678"
-    hash = "sha256-cqOQQa51ugTqcK5e/C+3n0mPVmutdNfB3XTWoux6KGU="
   [mod."golang.org/x/sys"]
-    version = "v0.19.0"
-    hash = "sha256-cmuL31TYLJmDm/fDnI2Sn0wB88cpdOHV1+urorsJWx4="
+    version = "v0.21.0"
+    hash = "sha256-gapzPWuEqY36V6W2YhIDYR49sEvjJRd7bSuf9K1f4JY="
   [mod."modernc.org/gc/v3"]
-    version = "v3.0.0-20240107210532-573471604cb6"
-    hash = "sha256-UO6/mPf3y3Iz5wnDAIRWHiCRQ+ElTECVbXXaekUkxA8="
+    version = "v3.0.0-20240304020402-f0dba7c97c2b"
+    hash = "sha256-mNcc0Tw2uVVb9YzBUhZ5POHxBiUnCckQywHm/p9NI9s="
   [mod."modernc.org/libc"]
-    version = "v1.50.9"
-    hash = "sha256-kvHq3zqoQQqhR5lrTj8C1j3q6mcCyi+bTlJnpAT7P9k="
+    version = "v1.52.1"
+    hash = "sha256-/QOIKGHsjcYv868DzrAa31lEii0G6+bWAYNF9E3JGwU="
   [mod."modernc.org/mathutil"]
     version = "v1.6.0"
     hash = "sha256-lfuEiS1odd2TWrTylnaGihSJ9myqKs3FLdpvd7PqTnE="
