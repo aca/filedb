@@ -13,20 +13,26 @@ type CommandOpt struct {
 	DB2 string
 }
 
+var dbopt = "?cache=shared&mode=rwc&_busy_timeout=5000&journal_mode=WAL"
+
 func Run(opt *CommandOpt) error {
 	rows := []types.Row{}
-	db := sqlitex.New(opt.DB1)
-	db2 := sqlitex.New(opt.DB2)
+
+	db := sqlitex.New(opt.DB1 + dbopt)
+	db2 := sqlitex.New(opt.DB2 + dbopt)
 
 	db.MustSelect(&rows, `select * from file`)
 
 	for _, row := range rows {
 		row2 := types.Row{}
-		db2.MustGet(&row2, `select * from file where path = ?`, row.Path)
+		err := db2.Get(&row2, `select * from file where path = ?`, row.Path)
+		if sqlitex.IsErrNoRows(err) {
+			log.Println("not found", row.Path)
+			continue
+		}
 
-		log.Println(row.Hash, row2.Hash)
 		if row.Hash != row2.Hash {
-			log.Fatal("hash not equal", row.Abs, row2.Abs)
+			log.Fatal("hash not equal", row.Abs, row2.Abs, row.Hash, row2.Hash)
 		}
 	}
 	return nil

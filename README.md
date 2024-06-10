@@ -2,7 +2,9 @@
 
 Manage hash in sqlite3, as an personal alternative to [snapraid content](https://www.snapraid.it/).
 
-    λ go run .
+run
+
+    λ farchive run
     2024/06/06 18:17:31 new file go.sum
     2024/06/06 18:17:31 new file go.mod
     2024/06/06 18:17:31 new file main.go
@@ -16,5 +18,12 @@ Manage hash in sqlite3, as an personal alternative to [snapraid content](https:/
     main.go     /home/rok/src/github.com/aca/farchive/main.go     3185  48ed034ab7d791a1  1717665448  1717665451
 
     # Edit main.go
-    λ go run .
+    λ farchive run
     2024/06/06 18:18:26 UPDATE HASH main.go 48ed034ab7d791a1 64291ff9f1b0960d
+
+
+diff
+
+    # after disk sync, check if there is any difference
+    λ farchive diff /mnt/disk0/farchive.db /mnt/disk1/farchive.db
+

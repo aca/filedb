@@ -72,11 +72,12 @@ func readSize(file string) (int64, error) {
 
 var db *sqlitex.DB
 var db2 *sqlitex.DB
+var dbopt = "?cache=shared&mode=rwc&_busy_timeout=5000&journal_mode=WAL"
 
 func Run(opt *CommandOpt) error {
 	dbname := "farchive.db"
 
-	db = sqlitex.New(dbname)
+	db = sqlitex.New(dbname + dbopt)
 	db.MustExec(schema)
 
 	// ctx := context.Background()
