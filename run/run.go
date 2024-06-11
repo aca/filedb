@@ -84,6 +84,8 @@ func Run(opt *CommandOpt) error {
 
 	files := make([]*File, 0, 10000)
 
+	log.Println("walk")
+
 	err := filepathx.WalkDir(".",
 		func(path string, d fs.DirEntry, err error) error {
 			if path == dbname {
@@ -97,6 +99,8 @@ func Run(opt *CommandOpt) error {
 			if !filepathx.IsFile(d.Type()) {
 				return nil
 			}
+
+			log.Println("path: ", path)
 
 			// if d.IsDir() {
 			// 	return nil
