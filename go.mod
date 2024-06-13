@@ -4,8 +4,7 @@ go 1.22.3
 
 require (
 	github.com/cespare/xxhash v1.1.0
-	github.com/cespare/xxhash/v2 v2.3.0
-	github.com/peterbourgon/ff/v4 v4.0.0-alpha.4
+	github.com/samber/lo v1.39.0
 	github.com/spf13/cobra v1.8.0
 	github.com/xtdlib/filepathx v0.0.0-20240607141025-fc5ce7e20891
 	github.com/xtdlib/sqlitex v0.0.0-20240606021949-4ea912f22133
@@ -22,6 +21,7 @@ require (
 	github.com/ncruces/go-strftime v0.1.9 // indirect
 	github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
+	golang.org/x/exp v0.0.0-20231108232855-2478ac86f678 // indirect
 	golang.org/x/sys v0.21.0 // indirect
 	modernc.org/gc/v3 v3.0.0-20240304020402-f0dba7c97c2b // indirect
 	modernc.org/libc v1.52.1 // indirect

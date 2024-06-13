@@ -4,9 +4,6 @@ schema = 3
   [mod."github.com/cespare/xxhash"]
     version = "v1.1.0"
     hash = "sha256-nVDTtXH9PC3yJ0THaQZEN243UP9xgLi/clt5xRqj3+M="
-  [mod."github.com/cespare/xxhash/v2"]
-    version = "v2.3.0"
-    hash = "sha256-7hRlwSR+fos1kx4VZmJ/7snR7zHh8ZFKX+qqqqGcQpY="
   [mod."github.com/dustin/go-humanize"]
     version = "v1.0.1"
     hash = "sha256-yuvxYYngpfVkUg9yAmG99IUVmADTQA0tMbBXe0Fq0Mc="
@@ -28,12 +25,12 @@ schema = 3
   [mod."github.com/ncruces/go-strftime"]
     version = "v0.1.9"
     hash = "sha256-T0iw+UEckzueWHT88PkTnZZixyKCEa+DTLzIiiohuWY="
-  [mod."github.com/peterbourgon/ff/v4"]
-    version = "v4.0.0-alpha.4"
-    hash = "sha256-uy7zv/lrqEj+qZp9zY3+zejwu6n1AdcwqcM+4j/rf84="
   [mod."github.com/remyoudompheng/bigfft"]
     version = "v0.0.0-20230129092748-24d4a6f8daec"
     hash = "sha256-vYmpyCE37eBYP/navhaLV4oX4/nu0Z/StAocLIFqrmM="
+  [mod."github.com/samber/lo"]
+    version = "v1.39.0"
+    hash = "sha256-bFJXbzFpUQM2xoNrHrlzn0RJZujd21H00zGBgo/JEb0="
   [mod."github.com/spf13/cobra"]
     version = "v1.8.0"
     hash = "sha256-oAE+fEaRfZPE541IPWE0GMeBBYgH2DMhtZNxzp7DFlY="
@@ -49,6 +46,9 @@ schema = 3
   [mod."github.com/xtdlib/try"]
     version = "v0.0.0-20240604182125-f8a60e11c9c6"
     hash = "sha256-VCGVm7GoyKIr2m8ivJ5Bzyvy4+UB1y03e/3cVAQzjwE="
+  [mod."golang.org/x/exp"]
+    version = "v0.0.0-20231108232855-2478ac86f678"
+    hash = "sha256-cqOQQa51ugTqcK5e/C+3n0mPVmutdNfB3XTWoux6KGU="
   [mod."golang.org/x/sys"]
     version = "v0.21.0"
     hash = "sha256-gapzPWuEqY36V6W2YhIDYR49sEvjJRd7bSuf9K1f4JY="
