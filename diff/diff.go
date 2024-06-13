@@ -31,6 +31,11 @@ func Run(opt *CommandOpt) error {
 			continue
 		}
 
+		if row.Abs == row2.Abs {
+			log.Fatal("it's same file", row.Abs)
+		}
+
+
 		if row.Hash != row2.Hash {
 			log.Fatal("hash not equal", row.Abs, row2.Abs, row.Hash, row2.Hash)
 		}
