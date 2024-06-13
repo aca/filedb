@@ -13,6 +13,7 @@ import (
 
 	"github.com/aca/farchive/types"
 	"github.com/cespare/xxhash"
+	"github.com/samber/lo"
 	"github.com/spf13/cobra"
 	"github.com/xtdlib/filepathx"
 	"github.com/xtdlib/sqlitex"
@@ -116,10 +117,10 @@ func Run(opt *CommandOpt) error {
 				return err
 			}
 
-			HashFile(&File{
-				Path: path,
-				Info: info,
-			})
+			// HashFile(&File{
+			// 	Path: path,
+			// 	Info: info,
+			// })
 
 			files = append(files, &File{
 				Path: path,
@@ -132,11 +133,11 @@ func Run(opt *CommandOpt) error {
 		log.Fatal(err)
 	}
 
-	// files = lo.Shuffle(files)
+	files = lo.Shuffle(files)
 
-	// for _, file := range files {
-	// 	HashFile(file)
-	// }
+	for _, file := range files {
+		HashFile(file)
+	}
 	return nil
 }
 
