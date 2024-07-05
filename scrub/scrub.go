@@ -1,4 +1,4 @@
-package run
+package scrub
 
 import (
 	"database/sql"
@@ -8,8 +8,6 @@ import (
 	"io/fs"
 	"log"
 	"os"
-	"path/filepath"
-	"time"
 
 	"github.com/aca/farchive/types"
 	"github.com/cespare/xxhash"
@@ -46,7 +44,7 @@ func Command() *cobra.Command {
 	f := &CommandOpt{}
 
 	cmd := &cobra.Command{
-		Use: "run",
+		Use: "scrub",
 		// Args:          cobra.ExactArgs(2),
 		SilenceUsage:  false,
 		SilenceErrors: false,
@@ -100,7 +98,6 @@ func Run(opt *CommandOpt) error {
 				return nil
 			}
 
-			log.Println("path: ", path)
 
 			switch filepathx.Base(path) {
 			case "farchive.db":
@@ -110,15 +107,6 @@ func Run(opt *CommandOpt) error {
 				log.Println("skip")
 				return nil
 			}
-
-			// if d.IsDir() {
-			// 	return nil
-			// }
-
-			// if (info.Mode() & fs.ModeSymlink) != 0 {
-			// 	log.Println(path, "is symlink")
-			// 	return nil
-			// }
 
 			info, err := d.Info()
 			if err != nil {
@@ -144,6 +132,7 @@ func Run(opt *CommandOpt) error {
 	files = lo.Shuffle(files)
 
 	for _, file := range files {
+		log.Println("path: ", file.Path)
 		HashFile(file)
 	}
 	return nil
@@ -151,42 +140,14 @@ func Run(opt *CommandOpt) error {
 
 func HashFile(file *File) {
 	row := types.Row{}
-	info := file.Info
 	path := file.Path
 	err := db.Get(&row, "SELECT * FROM file WHERE path = ?", path)
 	if err != nil && !errors.Is(err, sql.ErrNoRows) {
 		panic(err)
 	}
-	if err == nil {
-		if row.Size != info.Size() || row.ModifiedAt != info.ModTime().Unix() {
-			hashnew := XXHash(path)
-			row.ValidatedAt = time.Now().Unix()
-			if row.Hash != hashnew {
-				log.Println("UPDATE HASH", path, row.Hash, hashnew)
-			} else {
-				log.Println("file not changed: ", path)
-			}
-			db.MustNamedExec(`UPDATE file SET size = :size, modifiedAt = :modifiedAt, hash = :hash, validatedAt = :validatedAt WHERE path = :path`,
-				map[string]interface{}{
-					"path":        path,
-					"size":        info.Size(),
-					"modifiedAt":  info.ModTime().Unix(),
-					"hash":        hashnew,
-					"validatedAt": row.ValidatedAt,
-				})
-		}
-	} else {
-		log.Println("new file", path)
-		db.MustNamedExec(
-			`INSERT INTO file (path, abs, size, modifiedAt, hash, validatedAt) VALUES (:path, :abs, :size, :modifiedAt, :hash, :validatedAt)`, map[string]interface{}{
-				"path":        path,
-				"abs":         try.E1(filepath.Abs(path)),
-				"size":        info.Size(),
-				"modifiedAt":  info.ModTime().Unix(),
-				"hash":        XXHash(path),
-				"validatedAt": time.Now().Unix(),
-			},
-		)
+	hashnew := XXHash(path)
+	if row.Hash != hashnew {
+		log.Fatal("Hash not match", path, row.Hash, hashnew)
 	}
 }
 

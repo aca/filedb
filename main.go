@@ -6,11 +6,14 @@ import (
 	"path/filepath"
 
 	"github.com/aca/farchive/diff"
+	"github.com/aca/farchive/missing"
 	"github.com/aca/farchive/run"
+	"github.com/aca/farchive/scrub"
 	"github.com/spf13/cobra"
 )
 
 func main() {
+	log.SetFlags(log.Lshortfile | log.LstdFlags)
 	rootcmd, err := newRootCmd(os.Args)
 	if err != nil {
 		panic(err)
@@ -22,8 +25,6 @@ func main() {
 
 func newRootCmd(args []string) (*cobra.Command, error) {
 	versionFlag := false
-
-	
 
 	cmd := &cobra.Command{
 		Use:           filepath.Base(os.Args[0]), // avoid abs
@@ -39,6 +40,8 @@ func newRootCmd(args []string) (*cobra.Command, error) {
 	cmd.AddCommand(
 		run.Command(),
 		diff.Command(),
+		scrub.Command(),
+		missing.Command(),
 	)
 
 	return cmd, nil
